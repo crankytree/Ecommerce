@@ -1,0 +1,16 @@
+
+  
+  @import url('https://fonts.googleapis.com/css2?family=Itim&family=Montserrat:wght@500&display=swap');
+
+
+
+body{
+  /* font-family: 'Itim' , 'sans-serif' !important; */
+
+  
+}
+
+.anticon svg {
+  display: flex !important;
+  align-items: center !important;
+}
