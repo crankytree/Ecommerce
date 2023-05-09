@@ -1,5 +1,4 @@
 import axios from "axios";
-import { auth } from "../firebase";
 
 export const createCategory = async (category, authToken) => {
   try {
@@ -31,6 +30,18 @@ export const getCategory = async (slug) => {
     throw err;
   }
 };
+
+export const getCategoryById = async(id) => {
+  try{
+    const res = await axios.get(`${process.env.REACT_APP_API}/category-by-id/${id}`);
+    return res;
+  }
+  catch(err){
+    console.log(err);
+    throw err;
+  }
+}
+
 export const updateCategory = async (slug, category, authToken) => {
   try {
     const res = await axios.put(`${process.env.REACT_APP_API}/category/${slug}`, category, {
@@ -57,3 +68,13 @@ export const removeCategory = async (slug, authToken) => {
     throw err;
   }
 };
+
+export const getCategorySubs = async(_id) => {
+  try {
+    const res = await axios.get(`${process.env.REACT_APP_API}/category/subs/${_id}`);
+    return res;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}

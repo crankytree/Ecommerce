@@ -1,3 +1,4 @@
+const Product = require("../models/product");
 const Sub = require("../models/sub");
 const slugify = require("slugify")
 
@@ -26,7 +27,10 @@ const read = async(req, res) => {
     const slug = req.params.slug;
     const sub = await Sub.findOne({slug}).exec();
 
-    return res.status(200).json(sub);
+    const products = await Product.find({subs: sub}).populate("category").exec();
+
+
+    return res.status(200).json({sub , products});
   }
   catch(err){
     return res.status(400).json({message: "Failed to get the sub category" , err: err.message})

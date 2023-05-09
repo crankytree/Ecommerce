@@ -30,10 +30,10 @@ const ForgotPassword = () => {
       const res = await auth.sendPasswordResetEmail(email, config);
       setEmail("");
       toast.success("Check your email for password reset link");
+      setLoading(false);
     } catch (err) {
       console.log(err);
       toast.error(err.message);
-    } finally{
       setLoading(false);
     }
   };

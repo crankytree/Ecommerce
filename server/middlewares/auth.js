@@ -5,7 +5,7 @@ const authCheck = async(req , res , next) => {
   try{
     
     const firebaseUser = await admin.auth().verifyIdToken(req.headers.authtoken);
-    console.log("FIREBASE AUTH CHECK USER" , firebaseUser);
+    // console.log("FIREBASE AUTH CHECK USER" , firebaseUser);
     req.user = firebaseUser;
     next();
     

@@ -25,17 +25,17 @@ const productSchema = new mongoose.Schema(
       maxlength: 32,
     },
 
-    // category: {
-    //   type: ObjectId,
-    //   ref: "Category",
-    // },
+    category: {
+      type: ObjectId,
+      ref: "Category",
+    },
 
-    // subs: [
-    //   {
-    //     type: ObjectId,
-    //     ref: "Sub"
-    //   },
-    // ],
+    subs: [
+      {
+        type: ObjectId,
+        ref: "Sub"
+      },
+    ],
 
     quantity: Number,
 
@@ -44,9 +44,9 @@ const productSchema = new mongoose.Schema(
       default: 0
     },
 
-    // images: {
-    //   type: Array
-    // },
+    images: {
+      type: Array
+    },
 
     shipping: {
       type: String,
@@ -63,12 +63,12 @@ const productSchema = new mongoose.Schema(
       enum: ["Sony" , "Microsoft" , "Nintendo" , "Nvidia" , "Sega"]
     },
 
-    // ratings: [
-    //   {
-    //     star: Number,
-    //     postedBy: {type: ObjectId , ref: "User"}
-    //   }
-    // ],  
+    ratings: [
+      {
+        star: Number,
+        postedBy: {type: ObjectId , ref: "User"}
+      }
+    ],  
 
     slug:{
       type: String,

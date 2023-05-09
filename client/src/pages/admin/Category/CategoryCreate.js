@@ -4,15 +4,18 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { createCategory, getCategories, removeCategory } from "../../../functions/category";
 import { useSelector } from "react-redux";
-import { Popconfirm, Spin } from "antd";
+import { Popconfirm, Spin , Input } from "antd";
 import { useEffect } from "react";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import CategoryForm from "../../../components/forms/CategoryForm";
+import LocalSearch from "../../../components/forms/LocalSearch";
 
 const CategoryCreate = () => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [keyword, setKeyword] = useState("");
 
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -48,46 +51,25 @@ const CategoryCreate = () => {
     }
   };
 
-  const removeHandler = async(slug) => {
-    try{
+  const removeHandler = async (slug) => {
+    try {
       setLoading(true);
-      const res = await removeCategory(slug , user.token);
+      const res = await removeCategory(slug, user.token);
       setLoading(false);
 
-      toast.success(res.data.message)
+      toast.success(res.data.message);
       loadCategories();
-    }
-    catch(err){
+    } catch (err) {
       console.log(err.response);
       setLoading(false);
       if (err.response.status === 400) toast.error(err.response.data.message);
     }
-  }
-
-  const categoryForm = () => {
-    return (
-      <>
-        <form onSubmit={submitHandler}>
-          <div className="mb-3">
-            <label className="form-label">Name</label>
-            <input
-              className="form-control"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              autoFocus
-              required
-              disabled={loading}
-            ></input>
-          </div>
-
-          <button className="btn btn-primary" disabled={loading}>
-            Submit
-          </button>
-        </form>
-      </>
-    );
   };
+
+  
+
+  const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -97,14 +79,24 @@ const CategoryCreate = () => {
         <div className="col">
           <Spin spinning={loading}>
             <h4>Create Category</h4>
-            {categoryForm()}
-            <hr />
-            {categories.map((c) => {
+            <CategoryForm
+              submitHandler={submitHandler}
+              name={name}
+              setName={setName}
+              loading={loading}
+            />
+            <hr/> 
+            <LocalSearch setKeyword={setKeyword} keyword={keyword}/>
+
+            {categories.filter(searched(keyword)).map((c) => {
               return (
                 <div className="alert alert-secondary" key={c._id}>
                   {c.name}
                   <span className="btn btn-sm float-end">
-                    <Popconfirm title="Delete this Category" onConfirm={async() => await removeHandler(c.slug)}>
+                    <Popconfirm
+                      title="Delete this Category"
+                      onConfirm={async () => await removeHandler(c.slug)}
+                    >
                       <DeleteOutlined className="text-danger" />
                     </Popconfirm>
                   </span>
