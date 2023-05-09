@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { auth } from "./firebase";
 import {LoadingOutlined} from "@ant-design/icons"
 import SideDrawer from "./components/drawer/SideDrawer";
+import { currentUser } from "./functions/auth";
 
 
 // import Register from "./pages/auth/Register";
@@ -14,7 +15,6 @@ import SideDrawer from "./components/drawer/SideDrawer";
 // import Header from "./components/nav/Header";
 // import RegisterComplete from "./pages/auth/RegisterComplete";
 // import ForgotPassword from "./pages/auth/ForgotPassword";
-// import { currentUser } from "./functions/auth";
 // import History from "./pages/user/History";
 // import UserRoutes from "./components/routes/UserRoutes";
 // import Password from "./pages/user/Password";
@@ -48,7 +48,6 @@ const Home = lazy(() => import("./pages/Home"));
 const Header = lazy(() => import("./components/nav/Header"));
 const RegisterComplete = lazy(() => import("./pages/auth/RegisterComplete"));
 const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
-const { currentUser } = lazy(() => import("./functions/auth"));
 const History = lazy(() => import("./pages/user/History"));
 const UserRoutes = lazy(() => import("./components/routes/UserRoutes"));
 const Password = lazy(() => import("./pages/user/Password"));
