@@ -11,8 +11,8 @@ import { useEffect } from "react";
 import { createOrUpdateUser } from "../../functions/auth";
 
 const Login = () => {
-  const [email, setEmail] = useState("crankytree28082000@gmail.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
