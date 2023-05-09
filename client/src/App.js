@@ -5,6 +5,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { auth } from "./firebase";
 import {LoadingOutlined} from "@ant-design/icons"
+import SideDrawer from "./components/drawer/SideDrawer";
+
 
 // import Register from "./pages/auth/Register";
 // import Login from "./pages/auth/Login";
