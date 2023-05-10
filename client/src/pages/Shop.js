@@ -25,6 +25,7 @@ const Shop = () => {
   const [colors, setColors] = useState(["Black", "Brown", "Silver", "White", "Blue"]);
   const [color, setColor] = useState("");
   const [shipping, setShipping] = useState("");
+  const [priceIsTouched , setPriceIsTouched] = useState(false);
 
   const dispatch = useDispatch();
   const { search } = useSelector((state) => ({ ...state }));
@@ -53,6 +54,7 @@ const Shop = () => {
   }, [text]);
 
   useEffect(() => {
+    if(priceIsTouched)
     fetchProducts({ price });
   }, [ok]);
 
@@ -118,6 +120,10 @@ const Shop = () => {
     setBrand("");
     setColor("");
     setShipping("");
+
+    if(!priceIsTouched){
+      setPriceIsTouched(true);
+    }
 
     setTimeout(() => {
       setOk(!ok);
