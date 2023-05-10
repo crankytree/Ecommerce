@@ -11,19 +11,20 @@ import { getCategories, getCategorySubs } from "../../../functions/category";
 import FileUpload from "../../../components/forms/FileUpload";
 
 const initialState = {
-  title: "PS5 Console",
-  description: "Gaming console",
-  price: "60000",
+  title: "",
+  description: "",
+  price: "",
   categories: [],
   category: null,
   subs: [],
-  shipping: "Yes",
-  quantity: "100",
+  shipping: "",
+  quantity: "",
   images: [],
   colors: ["Black", "Brown", "Silver", "White", "Blue"],
   brands: ["Sony", "Microsoft", "Nintendo", "Nvidia", "Sega"],
-  color: "White",
-  brand: "Sony",
+  color: "",
+  brand: "",
+
 };
 
 const ProductCreate = () => {
@@ -33,6 +34,7 @@ const ProductCreate = () => {
   const [imageUploadLoading , setImageUploadLoading] = useState(false);
 
   const { user } = useSelector((state) => ({ ...state }));
+  
 
   useEffect(() => {
     loadCategories();

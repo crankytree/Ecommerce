@@ -44,7 +44,7 @@ const Order = (props) => {
 
   return (
     <>
-      {orders.map((order) => (
+      {orders.length > 0 && orders.map((order) => (
         <div className="btn bg-light mb-4">
           <div key={order._id} className="row pb-5">
             <ShowPaymentInfo order={order} showStatus={false} />
@@ -66,7 +66,7 @@ const Order = (props) => {
             </div>
           </div>
           <br/>
-          {showOrderInTable(order)}
+          {/* {showOrderInTable(order)} */}
         </div>
       ))}
     </>
