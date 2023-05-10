@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "../../components/nav/AdminNav";
-import { Spin } from "antd";
+import { Row, Spin , Col } from "antd";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { changeStatus, getOrders } from "../../functions/admin";
@@ -45,18 +45,30 @@ const AdminDashboard = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row">
+      {/* <div className="row">
         <div className="col-md-2">
           <AdminNav />
         </div>
         <div className="col-md-10">
           <Spin spinning={loading}>
             <h4>Admin Dashboard</h4>
-            {/* {JSON.stringify(orders)}; */}
+            
             <Orders orders={orders} statusChangeHandler={statusChangeHandler} />
           </Spin>
         </div>
-      </div>
+      </div> */}
+      <Row gutter={20}>
+        <Col span={4}>
+          <AdminNav />
+        </Col>
+        <Col span={20}>
+          <Spin spinning={loading}>
+            <h4>Admin Dashboard</h4>
+            {/* {JSON.stringify(orders)}; */}
+            <Orders orders={orders} statusChangeHandler={statusChangeHandler} />
+          </Spin>
+        </Col>
+      </Row>
     </div>
   );
 };

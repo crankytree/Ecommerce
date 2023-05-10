@@ -1,4 +1,4 @@
-import { Row, Col, Modal } from "antd";
+import { Row, Col, Modal, Space } from "antd";
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -70,7 +70,7 @@ const Cart = () => {
   return (
     <div className="container-fluid pt-2">
       <Row gutter={20}>
-        <Col span={16}>
+        <Col xs={24} sm={24} md={24} lg={16} xl={16}>
           <h4>Cart / {cart.length}</h4>
           {!cart.length ? (
             <p>
@@ -95,7 +95,7 @@ const Cart = () => {
           Total: <b>${getTotal()}</b>
           <hr />
           {user ? (
-            <>
+            <Space>
             <button
               onClick={saveOrderToDb}
               disabled={!cart.length}
@@ -110,7 +110,7 @@ const Cart = () => {
               >
               Pay Cash on Delivery
             </button>
-              </>
+              </Space>
           ) : (
             <button className="btn bth-sm btn-primary mt-2">
               <Link to={{ pathname: "/login", state: { from: "/cart" } }} className="text-reset">

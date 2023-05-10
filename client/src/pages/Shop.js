@@ -396,7 +396,7 @@ const Shop = () => {
 
             <Row gutter={20} className="pb-5">
               {products.map((p) => (
-                <Col key={p._id} span={8} className="gutter-row mt-3">
+                <Col key={p._id} sm={24} md={8} className="gutter-row mt-3">
                   <ProductCard product={p} />
                 </Col>
               ))}
